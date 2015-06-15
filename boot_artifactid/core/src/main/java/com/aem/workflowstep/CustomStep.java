@@ -27,7 +27,7 @@ public class CustomStep implements WorkflowProcess {
 	    throws WorkflowException {
 	final Date d = new Date();
 	System.out.println(d + "******************************************************");
-	
+	System.out.println("Edited for Git");
 	final long scheduleTime = d.getTime() + 500 * 1000;
 	item.getWorkflow().getWorkflowData().getMetaDataMap().put("absoluteTime", scheduleTime);
 	System.out.println(d.toString() + " *****__**__**____ Step 1 Was executed");
