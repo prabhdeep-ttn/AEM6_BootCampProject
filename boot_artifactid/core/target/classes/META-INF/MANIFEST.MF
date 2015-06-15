@@ -1,0 +1,45 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1434111142594
+Build-Jdk: 1.7.0_80
+Built-By: ttnd
+Bundle-Description: Core bundle for bootArtifact
+Bundle-ManifestVersion: 2
+Bundle-Name: bootArtifact - Core
+Bundle-SymbolicName: boot_camp_grpid.boot_artifactid.core
+Bundle-Version: 1.0.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: com.intelligrapt.core;version="1.0";uses:="org.apache.sl
+ ing.api,org.apache.sling.api.resource,org.apache.sling.api.servlets",co
+ m.aem.workflowstep;version="1.0.0";uses:="com.adobe.granite.workflow,co
+ m.adobe.granite.workflow.exec,com.adobe.granite.workflow.metadata,com.d
+ ay.cq.mailer,com.intelligrapt.core,org.apache.sling.api.resource,org.sl
+ f4j"
+Import-Package: com.adobe.granite.workflow;version="[1.0,2)",com.adobe.g
+ ranite.workflow.exec;version="[1.0,2)",com.adobe.granite.workflow.metad
+ ata;version="[1.0,2)",com.adobe.granite.workflow.model;version="[1.0,2)
+ ",com.day.cq.commons.jcr;version="[5.7,6)",com.day.cq.mailer;version="[
+ 5.8,6)",com.intelligrapt.core;version="[1.0,1.1)",javax.jcr;version="[2
+ .0,3)",javax.servlet,org.apache.sling.api;version="[2.3,3)",org.apache.
+ sling.api.request;version="[2.4,3)",org.apache.sling.api.resource;versi
+ on="[2.5,3)",org.apache.sling.api.servlets;version="[2.1,3)",org.apache
+ .sling.commons.osgi;version="[2.2,3)",org.apache.sling.commons.schedule
+ r;version="[2.3,3)",org.apache.sling.jcr.api;version="[2.2,3)",org.osgi
+ .service.component;version="[1.1,2)",org.osgi.service.event;version="[1
+ .2,2)",org.slf4j;version="[1.5,2)"
+Originally-Created-By: Apache Maven Bundle Plugin
+Provide-Capability: osgi.service;effective:=active;objectClass="java.lan
+ g.Runnable";scheduler.expression="*/30 * * * * ?";scheduler.concurrent=
+ false;service.vendor=Adobe
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.6))"
+Service-Component: OSGI-INF/com.intelligrapt.core.impl.schedulers.Simple
+ ScheduledTask.xml,OSGI-INF/com.aem.workflowstep.CustomStep.xml,OSGI-INF
+ /com.intelligrapt.core.impl.HelloServiceImpl.xml,OSGI-INF/com.intelligr
+ apt.core.impl.HelloServiceImpl2.xml,OSGI-INF/com.aem.workflowstep.Creat
+ eResourceStep.xml,OSGI-INF/com.intelligrapt.core.impl.filters.LoggingFi
+ lter.xml,OSGI-INF/com.aem.workflowstep.CustomStep2.xml,OSGI-INF/com.int
+ elligrapt.core.impl.listeners.SimpleResourceListener.xml,OSGI-INF/com.i
+ ntelligrapt.core.HelloServlet.xml,OSGI-INF/com.intelligrapt.core.impl.s
+ chedulers.CQSchedulerExample.xml,OSGI-INF/com.intelligrapt.core.impl.sc
+ hedulers.CreateResourceScheduler.xml,OSGI-INF/com.intelligrapt.core.imp
+ l.servlets.SimpleServlet.xml
+Tool: Bnd-2.3.0.201405100607
