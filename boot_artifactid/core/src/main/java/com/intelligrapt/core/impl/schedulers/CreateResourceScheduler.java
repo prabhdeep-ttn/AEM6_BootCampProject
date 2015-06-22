@@ -26,7 +26,7 @@ public class CreateResourceScheduler implements Runnable {
 
     @Reference
     private ResourceResolverFactory resolverFactory;
-
+    
     @Reference
     private HelloService createResourceService;
 
