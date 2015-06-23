@@ -32,20 +32,20 @@ import com.google.gson.Gson;
 @Component(immediate = true, metatype = false, label = "RSSservlet")
 @Service
 @Properties(value = { @Property(name = "sling.servlet.methods", value = "GET"),
-        @Property(name = "sling.servlet.paths", value = "/bin/servlets/RSSservlet") })
+	@Property(name = "sling.servlet.paths", value = "/bin/servlets/RSSservlet") })
 public class RSSServlet extends SlingAllMethodsServlet {
-    
+
     private static final long serialVersionUID = 1L;
-    
+
     @Reference
     private QueryBuilder builder;
-
-    final Map<String, Map<Object, Object>> feeds = new TreeMap<String, Map<Object, Object>>();
     
+    final Map<String, Map<Object, Object>> feeds = new TreeMap<String, Map<Object, Object>>();
+
     @Override
     protected void doGet(final SlingHttpServletRequest request, final SlingHttpServletResponse response)
 	    throws IOException {
-
+	
 	feeds.clear();
 	int noOfFeeds = 10;
 	final String path = request.getParameter("path");
@@ -54,7 +54,7 @@ public class RSSServlet extends SlingAllMethodsServlet {
 	if (noOfFeedsToBeDisplayed != null) {
 	    noOfFeeds = Integer.parseInt(noOfFeedsToBeDisplayed);
 	}
-
+	
 	try {
 	    updateFeedsMapUsingQuery(path, noOfFeeds, request.getResourceResolver().adaptTo(Session.class));
 	    writeMapToResponseAsJson(response);
@@ -64,31 +64,31 @@ public class RSSServlet extends SlingAllMethodsServlet {
 	    e.printStackTrace();
 	}
 	// updateFeedsMap(res.adaptTo(Page.class));
-
+	
     }
-
+    
     private void updateFeedsMapUsingQuery(final String path, final int noOfFeeds, final Session session)
 	    throws InvalidQueryException, RepositoryException {
 	final Map<String, String> map = new HashMap<String, String>();
 	map.put("path", path);
 	map.put("type", "cq:Page");
-	// map.put("orderby", "@jcr:content/cq:lastModified");
-	map.put("orderby", "jcr:created");
+	map.put("orderby", "@jcr:content/cq:lastModified");
+	// map.put("orderby", "jcr:created");
 	map.put("orderby.sort", "desc");
 	map.put("1_property", "jcr:content/jcr:primaryType");
 	map.put("1_property.value", "cq:PageContent");
-
+	
 	final Query query = builder.createQuery(PredicateGroup.create(map), session);
 	// query.setStart(0);
 	query.setHitsPerPage(noOfFeeds);
-
+	
 	final SearchResult result = query.getResult();
 	for (final Hit hit : result.getHits()) {
 	    final ValueMap prop = hit.getProperties();
 	    addFeed(prop.get("jcr:title"), prop.get("id"));
 	}
     }
-    
+
     private void addFeed(final Object title, final Object id) {
 	final Map<Object, Object> pageProperties = new HashMap<Object, Object>();
 	pageProperties.put("title", title);
@@ -97,7 +97,7 @@ public class RSSServlet extends SlingAllMethodsServlet {
 	feeds.put("" + size, pageProperties);
 	// return size == noOfFeeds;
     }
-
+    
     private void writeMapToResponseAsJson(final SlingHttpServletResponse response) {
 	final String json = new Gson().toJson(feeds);
 	response.setContentType("application/json");
@@ -110,7 +110,7 @@ public class RSSServlet extends SlingAllMethodsServlet {
 	    System.out.println(errors.toString());
 	}
     }
-    
+
     // private void updateFeedsMap(final Page sourcePage) {
     // final Iterator<Page> yearIterator = sourcePage.listChildren();
     // while (yearIterator.hasNext()) {
@@ -129,7 +129,7 @@ public class RSSServlet extends SlingAllMethodsServlet {
     //
     // }
     // }
-
+    
     //
     // private void logic1(final SlingHttpServletRequest request) {
     // final ResourceResolver resolver = request.getResourceResolver();
@@ -164,5 +164,5 @@ public class RSSServlet extends SlingAllMethodsServlet {
     // }
     // }
     //
-    
+
 }
