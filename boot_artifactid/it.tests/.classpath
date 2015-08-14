@@ -22,5 +22,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/media/ttnd/Data/eclipse/plugins/org.junit4_4.8.1.v20120523-1257.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
