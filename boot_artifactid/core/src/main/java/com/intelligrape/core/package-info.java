@@ -13,25 +13,9 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package apps.bootApps.components.content.servicecomponent;
+@Version("1.0")
+@Export(optional = "provide:=true")
+package com.intelligrape.core;
 
-import javax.script.Bindings;
-
-import org.apache.sling.api.scripting.SlingScriptHelper;
-import com.intelligrape.core.HelloService;
-
-import com.adobe.cq.sightly.WCMUse;
-
-public class HelloServiceProxy extends WCMUse {
-    
-	@Override
-	public void activate() throws Exception {
-		// nothing to be done here in this case
-	}
-	
-    public String getHelloMessage() {
-    	SlingScriptHelper ssh = getSlingScriptHelper();
-    	HelloService helloService = ssh.getService(HelloService.class);
-    	return helloService.getMessage();
-    }
-}
+import aQute.bnd.annotation.Export;
+import aQute.bnd.annotation.Version;

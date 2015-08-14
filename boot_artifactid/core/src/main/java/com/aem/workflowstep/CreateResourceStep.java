@@ -28,7 +28,7 @@ import com.adobe.granite.workflow.exec.WorkflowProcess;
 import com.adobe.granite.workflow.metadata.MetaDataMap;
 import com.adobe.granite.workflow.model.WorkflowTransition;
 import com.day.cq.mailer.MessageGatewayService;
-import com.intelligrapt.core.HelloService;
+import com.intelligrape.core.HelloService;
 
 @Component
 @Service
@@ -43,10 +43,10 @@ public class CreateResourceStep implements WorkflowProcess {
     @Reference
     private ResourceResolverFactory resolverFactory;
     
-    @Reference(target = "(component.name=com.intelligrapt.core.impl.HelloServiceImpl)")
+    @Reference(target = "(component.name=com.intelligrape.core.impl.HelloServiceImpl)")
     private HelloService createResourceService;
     
-    @Reference(target = "(component.name=com.intelligrapt.core.impl.HelloServiceImpl2)")
+    @Reference(target = "(component.name=com.intelligrape.core.impl.HelloServiceImpl2)")
     private HelloService createResourceService2;
     
     // Inject a MessageGatewayService
